@@ -40,9 +40,15 @@ submit.addEventListener("click", () =>{
     }
 })
 
-deleteAll.addEventListener("click", e =>{
-
-})
+deleteAll.addEventListener("click", () =>{
+    //removes the first child of the ordered list (list item)  while the first child exists
+    while(orderedList.firstChild){
+        //removes first list item
+        orderedList.removeChild(orderedList.firstChild)
+        //second list item now becomes the first child
+    }
+   }
+)
 
 //creating a function which will place the task in an object
 const setTask = (task) =>{
@@ -60,3 +66,5 @@ const setTask = (task) =>{
 const incrementIndex = (arrayIndex) =>{
     return ++arrayIndex
 }
+
+
