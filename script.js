@@ -24,19 +24,36 @@ const errorSection = document.querySelector(".error-section")
 //creating a var to represent the index of the array
 let arrayIndex = 0;
  
+//create an array for lists
+const listItems = [];
+
+const divItems = [];
+
+const buttonList = [];
 
 //accessing the un ordered list element
 const orderedList = document.querySelector(".ordered-list")
 
+ //creating a list item element
+ 
+ 
+
+
 submit.addEventListener("click", () =>{
  
+   const listItem = document.createElement("li");
+   const taskCompleted = document.createElement("button")
+   taskCompleted.innerText = "COMPLETED"
     if(enterTask.value == ""){
         error.innerText = "Enter a task"
         error.style.color = "red"
         return errorSection.append(error)
     }else{
-        setTask(enterTask.value)
+      listItem.value = setTask(enterTask.value)
+      listItem.append(taskCompleted)
       arrayIndex =  incrementIndex(arrayIndex)
+      orderedList.append(listItem)
+
     }
 })
 
@@ -52,14 +69,10 @@ deleteAll.addEventListener("click", () =>{
 
 //creating a function which will place the task in an object
 const setTask = (task) =>{
-    //creating a list item element
-    const listItem = document.createElement("li");
         taskItem = {
             "specifiedTask": task
         }
-        tasks.push(taskItem)
-        listItem.innerText = tasks[arrayIndex].specifiedTask
-        return orderedList.append( listItem)
+        return taskItem.specifiedTask + " "
          
 }
 
@@ -68,3 +81,9 @@ const incrementIndex = (arrayIndex) =>{
 }
 
 
+const appending = (element, divItems, listItems) =>{
+
+}
+//if(taskCompleted.onclick){
+  //  taskCompleted.onclick = function() {deleteListItem(arrayIndex, tasks)};
+//}
