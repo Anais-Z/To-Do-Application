@@ -30,30 +30,32 @@ const listItems = [];
 const divItems = [];
 
 const buttonList = [];
-
+let taskCompleted;
 //accessing the un ordered list element
 const orderedList = document.querySelector(".ordered-list")
 
- //creating a list item element
  
- 
-
-
 submit.addEventListener("click", () =>{
  
    const listItem = document.createElement("li");
-   const taskCompleted = document.createElement("button")
-   taskCompleted.innerText = "COMPLETED"
     if(enterTask.value == ""){
         error.innerText = "Enter a task"
         error.style.color = "red"
         return errorSection.append(error)
     }else{
-      listItem.value = setTask(enterTask.value)
-      listItem.append(taskCompleted)
-      arrayIndex =  incrementIndex(arrayIndex)
+     // console.log(submit.id)
+      listItem.innerText = setTask(enterTask.value)
+      let lol = addButtons(arrayIndex)
+      listItem.append(lol)
+      listItem.setAttribute('id', arrayIndex)
+      listItems.push(listItem)
       orderedList.append(listItem)
-
+      arrayIndex =  incrementIndex(arrayIndex)
+      taskCompleted.addEventListener('click', () =>{
+          console.log(buttonList[taskCompleted.id])
+       //   orderedList.removeChild(orderedList.listItems[this.id])
+      //  orderedList.removeChild(buttonList[arrayIndex])
+    })
     }
 })
 
@@ -81,9 +83,13 @@ const incrementIndex = (arrayIndex) =>{
 }
 
 
-const appending = (element, divItems, listItems) =>{
+const addButtons= (arrayIndex) =>{
+  taskCompleted  = document.createElement("button")
+taskCompleted.innerText = "COMPLETED"
+taskCompleted.setAttribute('id', arrayIndex)
+    buttonList.push(taskCompleted)
+    return buttonList[arrayIndex]
+
 
 }
-//if(taskCompleted.onclick){
-  //  taskCompleted.onclick = function() {deleteListItem(arrayIndex, tasks)};
-//}
+
