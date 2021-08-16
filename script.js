@@ -35,11 +35,11 @@ let taskCompleted;
 //accessing the un ordered list element
 const orderedList = document.querySelector(".ordered-list")
 
- 
+
  
 submit.addEventListener("click", (e) =>{
  
-   const listItem = document.createElement("li");
+    const listItem = document.createElement("li");
   // listItem.className = "list-item"
     if(enterTask.value == ""){
         error.innerText = "Enter a task"
@@ -72,7 +72,7 @@ const deleteListItem = () =>{
             
         })
     })
-    }
+}
 
   
 
@@ -93,7 +93,7 @@ const setTask = (task) =>{
             "specifiedTask": task
         }
         return taskItem.specifiedTask + " "
-         
+
 }
 
 const incrementIndex = (arrayIndex) =>{
@@ -101,13 +101,6 @@ const incrementIndex = (arrayIndex) =>{
 }
 
 
-const addButtons= (arrayIndex) =>{
-  taskCompleted  = document.createElement("button")
-taskCompleted.innerText = "COMPLETED"
-taskCompleted.setAttribute('id', arrayIndex)
-    buttonList.push(taskCompleted)
-    return buttonList[arrayIndex]
 
 
-}
 
