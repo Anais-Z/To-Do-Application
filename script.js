@@ -31,33 +31,51 @@ const divItems = [];
 
 const buttonList = [];
 let taskCompleted;
+
 //accessing the un ordered list element
 const orderedList = document.querySelector(".ordered-list")
 
  
-submit.addEventListener("click", () =>{
+ 
+submit.addEventListener("click", (e) =>{
  
    const listItem = document.createElement("li");
+  // listItem.className = "list-item"
     if(enterTask.value == ""){
         error.innerText = "Enter a task"
         error.style.color = "red"
         return errorSection.append(error)
     }else{
-     // console.log(submit.id)
       listItem.innerText = setTask(enterTask.value)
-      let lol = addButtons(arrayIndex)
-      listItem.append(lol)
+      taskCompleted  = document.createElement("button")
+      taskCompleted.innerText = "COMPLETED"
+      buttonList.push(taskCompleted)
+      listItem.append(taskCompleted)
       listItem.setAttribute('id', arrayIndex)
       listItems.push(listItem)
       orderedList.append(listItem)
-      arrayIndex =  incrementIndex(arrayIndex)
-      taskCompleted.addEventListener('click', () =>{
-          console.log(buttonList[taskCompleted.id])
-       //   orderedList.removeChild(orderedList.listItems[this.id])
-      //  orderedList.removeChild(buttonList[arrayIndex])
+    }
+    deleteListItem()
+} 
+)
+
+const deleteListItem = () =>{
+
+    //accessing all the buttons in the ordered list
+    let deleteButton = orderedList.querySelectorAll('button')
+
+    //iterating through every button
+    deleteButton.forEach((e) => {
+        //if the button is click, then the parent element (list item) will be deleted 
+        e.addEventListener('click', () =>{
+             e.parentElement.remove()
+            
+        })
     })
     }
-})
+
+  
+
 
 deleteAll.addEventListener("click", () =>{
     //removes the first child of the ordered list (list item)  while the first child exists
