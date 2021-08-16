@@ -1,9 +1,22 @@
 main > div {
     display: flex;
     justify-content: center;
+    
 }
 
 header {
     display: flex;
     justify-content: center;
+}
+
+ul{
+    color: white;
+}
+
+li{
+    color: black;
+}
+
+ol > div {
+    display: flex;
 }
